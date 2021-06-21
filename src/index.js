@@ -6,16 +6,25 @@ import './index.css';
 class Square extends React.Component {
     render() {
         return (
-            <button className="square">
-                {/* TODO */}
+            // here we used a normal function call
+            // <button className="square" onClick={function () { alert("Click on the function ! "); }}>
+            //     {this.props.vals}
+            // </button>
+
+            // for event handling , we use arrow functions
+
+            <button className="square" onClick={() => { alert("Clicked on the arrow function! ...") }}>
+                {this.props.vals}
+
             </button>
+
         );
     }
 }
 
 class Board extends React.Component {
     renderSquare(i) {
-        return <Square />;
+        return <Square vals={i} />;
     }
 
     render() {
