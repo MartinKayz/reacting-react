@@ -4,6 +4,14 @@ import './index.css';
 
 
 class Square extends React.Component {
+    // a component constructor, this one allows for saving state of the component
+    constructor(props) {
+        super(props);
+        this.state = {
+            vals: null,
+        };
+    }
+
     render() {
         return (
             // here we used a normal function call
@@ -13,8 +21,9 @@ class Square extends React.Component {
 
             // for event handling , we use arrow functions
 
-            <button className="square" onClick={() => { alert("Clicked on the arrow function! ...") }}>
-                {this.props.vals}
+            <button className="square"
+                onClick={() => { this.setState({ vals: 'X' }) }}>
+                {this.state.vals}
 
             </button>
 
