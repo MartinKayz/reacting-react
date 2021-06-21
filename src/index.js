@@ -32,8 +32,19 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares: Array(9).fill(null),
+        };
+    }
+
     renderSquare(i) {
-        return <Square vals={i} />;
+        // here we passed the vals prop down to show numbers 0 -8 
+        // return <Square vals={i} />;
+        return <Square vals={this.state.squares[i]} />;
+
+        // we are now instructing each individual aquare about its current value 'x','o', or null
     }
 
     render() {
