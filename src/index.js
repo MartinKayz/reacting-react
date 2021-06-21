@@ -3,41 +3,54 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-class Square extends React.Component {
-    // a component constructor, this one allows for saving state of the component
+// class Square extends React.Component {
+//     // a component constructor, this one allows for saving state of the component
 
-    // now deleting the contructor because the square no longer keeps track of games state
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         vals: null,
-    //     };   
-    // }
+//     // now deleting the contructor because the square no longer keeps track of games state
+//     // constructor(props) {
+//     //     super(props);
+//     //     this.state = {
+//     //         vals: null,
+//     //     };   
+//     // }
 
-    render() {
-        return (
-            // here we used a normal function call
-            // <button className="square" onClick={function () { alert("Click on the function ! "); }}>
-            //     {this.props.vals}
-            // </button>
+//     render() {
+//         return (
+//             // here we used a normal function call
+//             // <button className="square" onClick={function () { alert("Click on the function ! "); }}>
+//             //     {this.props.vals}
+//             // </button>
 
-            // for event handling , we use arrow functions
+//             // for event handling , we use arrow functions
 
-            <button className="square"
-                // passing two props from Board to square
-                onClick={() => { this.props.onClick() }}>
-                {this.props.vals}
+//             <button className="square"
+//                 // passing two props from Board to square
+//                 onClick={() => { this.props.onClick() }}>
+//                 {this.props.vals}
 
-            </button>
+//             </button>
 
-        );
-    }
-}// constructor(props) {
+//         );
+//     }
+// }// constructor(props) {
 //     super(props);
 //     this.state = {
 //         vals: null,
 //     };
 // }
+
+//refactoring the square component to become a function component 
+// this is because it does not have its own state
+function Square(props) {
+    return (
+        <button className="square" onClick={() => props.onClick}>
+            {props.vals}
+        </button>
+
+
+    );
+
+}
 
 class Board extends React.Component {
     constructor(props) {
