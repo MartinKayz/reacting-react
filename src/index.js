@@ -5,12 +5,14 @@ import './index.css';
 
 class Square extends React.Component {
     // a component constructor, this one allows for saving state of the component
-    constructor(props) {
-        super(props);
-        this.state = {
-            vals: null,
-        };
-    }
+
+    // now deleting the contructor because the square no longer keeps track of games state
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         vals: null,
+    //     };   
+    // }
 
     render() {
         return (
@@ -22,14 +24,20 @@ class Square extends React.Component {
             // for event handling , we use arrow functions
 
             <button className="square"
-                onClick={() => { this.setState({ vals: 'X' }) }}>
-                {this.state.vals}
+                // passing two props from Board to square
+                onClick={() => { this.props.onClick() }}>
+                {this.props.vals}
 
             </button>
 
         );
     }
-}
+}// constructor(props) {
+//     super(props);
+//     this.state = {
+//         vals: null,
+//     };
+// }
 
 class Board extends React.Component {
     constructor(props) {
@@ -39,10 +47,22 @@ class Board extends React.Component {
         };
     }
 
+    handleClick(i) {
+        const squares = this.state.squares.slice();
+        squares[i] = 'X';
+        this.setState({ squares: squares });
+
+    }
+
     renderSquare(i) {
         // here we passed the vals prop down to show numbers 0 -8 
         // return <Square vals={i} />;
-        return <Square vals={this.state.squares[i]} />;
+        return (
+            <Square
+                vals={this.state.squares[i]}
+                onClick={() => this.handleClick(i)}
+            />
+        );
 
         // we are now instructing each individual aquare about its current value 'x','o', or null
     }
